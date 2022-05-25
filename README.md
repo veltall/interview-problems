@@ -4,4 +4,4 @@ A collection of my own solutions / ideas for various interview coding challenges
 
 Ongoing List:
 
-1. next larger permutation of a number
+1. [Problem 1](nextPerm/): Next larger permutation of a number
