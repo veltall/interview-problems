@@ -18,7 +18,7 @@ void checkSort(List<int> list) {
 void runTest() {
   List<int> list = [1, 2, 3, 4];
   List<int> testList = <int>[];
-  int permLength = quickfactorial(list.length) - 1;
+  int permLength = factorial(list.length) - 1;
   print('original list: $list');
   print('next $permLength permutations:');
   for (int i in List.generate(permLength, (index) => index)) {
@@ -58,12 +58,10 @@ List<int> subsort(List<int> list, int i) {
   return list.sublist(0, i)..addAll(list.sublist(i)..sort());
 }
 
-int quickfactorial(int n) {
-  int factorial = 1;
-  int i = 1;
-  while (i <= n) {
-    factorial *= i;
-    i++;
+int factorial(int n) {
+  if (n == 1) {
+    return n;
+  } else {
+    return n * factorial(n - 1);
   }
-  return factorial;
 }
