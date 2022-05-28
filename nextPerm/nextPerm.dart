@@ -4,9 +4,10 @@ main() {
 
 void runTest() {
   List<int> list = [1, 2, 3, 4];
+  int permLength = quickfactorial(list.length);
   print('original list: $list');
-  print('next 15 permutations:');
-  for (int i in List.generate(15, (index) => index)) {
+  print('next $permLength permutations:');
+  for (int i in List.generate(permLength, (index) => index)) {
     list = breakLeastSignificantSortedOrder(list);
     print(list);
   }
@@ -18,6 +19,7 @@ List<int> breakLeastSignificantSortedOrder(List<int> list) {
     for (int j = list.length - 1; j >= i; j--) {
       if (list[i] < list[j]) {
         swap(list, i, j);
+        list = subsort(list, i + 1);
         return list;
       }
     }
@@ -29,4 +31,21 @@ List<int> breakLeastSignificantSortedOrder(List<int> list) {
 void swap(List<int> list, int i, int j) {
   // push j into i's position, shifting the rest over by 1 position
   list.insert(i, list.removeAt(j));
+}
+
+// sort from i to the end of array
+List<int> subsort(List<int> list, int i) {
+  final List<int> tempList = list.sublist(i);
+  tempList.sort();
+  return list.sublist(0, i)..addAll(tempList);
+}
+
+int quickfactorial(int n) {
+  int factorial = 1;
+  int i = 1;
+  while (i <= n) {
+    factorial *= i;
+    i++;
+  }
+  return factorial;
 }

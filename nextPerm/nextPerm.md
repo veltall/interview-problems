@@ -19,3 +19,6 @@ Ideas:
 - We thus perform a double scan from the right side of the array and--upon finding the first pair that is in sorted order--swap them.
 
 > ALERT: A regular two-number swap would move two digits in a number. One of those moves would break only one sorted order (as intended), the other is not guaranteed to behave in any predictable way. Thus a 'swap' here actually only moves one digit from the right side to the left side and pushes other digits one position to the right.
+
+- UPDATE: A single naive swap isn't sufficient. The theory that breaking the least significant ordered pair will yield the next bigger configuration is invalid. A temporary solution is to always sort the less significant side of the swap to guarantee that the entire operation (swap + sort) results in the smallest possible configuration from that point onward.
+- I am personally unsure how this works intuitively or mathematically. The explanation for this solution remains an open problem.
